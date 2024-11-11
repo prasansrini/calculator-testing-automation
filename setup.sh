@@ -12,6 +12,18 @@ check_node() {
     fi
 }
 
+# Function to check if Python is installed
+check_python() {
+    if command -v python3 &> /dev/null; then
+        echo "Python is already installed."
+    else
+        echo "Python is not installed. Please install Python."
+        echo "You can install it using the following command:"
+        echo "sudo apt-get install -y python3"
+        exit 1
+    fi
+}
+
 # Function to check if Appium is installed
 check_appium() {
     if command -v appium &> /dev/null; then
@@ -31,5 +43,6 @@ run_appium() {
 
 # Main script execution
 check_node
+check_python
 check_appium
 run_appium

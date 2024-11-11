@@ -12,6 +12,15 @@ IF %ERRORLEVEL% NEQ 0 (
     echo Node.js is already installed.
 )
 
+REM Function to check if Python is installed
+where python >nul 2>nul
+IF %ERRORLEVEL% NEQ 0 (
+    echo Python is not installed. Please install Python from https://www.python.org/downloads/
+    exit /b
+) ELSE (
+    echo Python is already installed.
+)
+
 REM Function to check if Appium is installed
 where appium >nul 2>nul
 IF %ERRORLEVEL% NEQ 0 (
