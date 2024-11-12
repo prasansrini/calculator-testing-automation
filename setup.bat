@@ -32,7 +32,7 @@ IF %ERRORLEVEL% NEQ 0 (
 
 REM Run Appium server
 echo Running Appium server...
-start /B appium
-echo Appium server is running in the background.
+start /B appium --log-level info --log-no-colors > appium_log2.txt
+echo Appium server is running.
 
 ENDLOCAL

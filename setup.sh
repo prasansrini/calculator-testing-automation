@@ -37,7 +37,7 @@ check_appium() {
 # Function to run Appium server
 run_appium() {
     echo "Running Appium server..."
-    appium &
+    appium --log-level info --log-no-colors > appium_log2.txt
     echo "Appium server is running in the background."
 }
 
