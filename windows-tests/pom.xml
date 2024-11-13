@@ -20,7 +20,7 @@
         </plugins>
     </build>
 
-    <name>CalculatorTest</name>
+    <name>AppiumTests</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
