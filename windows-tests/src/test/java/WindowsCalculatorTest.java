@@ -1,13 +1,12 @@
 import capabilities.WindowsCapabilities;
+import io.appium.java_client.windows.WindowsDriver;
 import org.junit.*;
 import org.openqa.selenium.WebElement;
 
 import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
-import java.net.URL;
-
-import io.appium.java_client.windows.WindowsDriver;
 
 public class WindowsCalculatorTest {
     private static WindowsDriver<WebElement> mCalculatorSession = null;
@@ -16,7 +15,7 @@ public class WindowsCalculatorTest {
     @BeforeClass
     public static void setup() {
         try {
-            mCalculatorSession = new WindowsDriver<>(new URL("http://127.0.0.1:4723"), WindowsCapabilities.getInstance());
+            mCalculatorSession = new WindowsDriver<>(new URL(Constants.APPIUM_LOCAL_URL.toString()), WindowsCapabilities.getInstance());
             mCalculatorSession.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
             mCalculatorResult = mCalculatorSession.findElementByAccessibilityId("CalculatorResults");
@@ -27,14 +26,6 @@ public class WindowsCalculatorTest {
         }
     }
 
-    @Before
-    public void clear() {
-        if (mCalculatorSession != null) {
-            clickThrough("Clear");
-            Assert.assertEquals("0", formatCalculatorResultsText());
-        }
-    }
-
     @AfterClass
     public static void tearDown() {
         mCalculatorResult = null;
@@ -42,6 +33,14 @@ public class WindowsCalculatorTest {
             mCalculatorSession.quit();
         }
         mCalculatorSession = null;
+    }
+
+    @Before
+    public void clear() {
+        if (mCalculatorSession != null) {
+            clickThrough("Clear");
+            Assert.assertEquals("0", formatCalculatorResultsText());
+        }
     }
 
     @Test

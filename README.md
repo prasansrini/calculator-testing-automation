@@ -1,10 +1,16 @@
 # Introduction
 Scripts to automated tests for Samsung Calculator mobile application.
 
-## How to:
+## Setup:
 1. Run `setup.bat` for Windows or `setup.sh` for Linux. This script installs the dependencies and starts appium server.
-2. Connect a Samsung device and install Android drivers.
-3. Open this repository in VS Code and run `python tests.py`
+2. Install Android drivers including build-tools in Android SDK.
+3. Connect an Android Samsung device.
+
+## Tests using python
+Open this repository in VS Code and run `python tests.py` to run Android tests.
+
+## Tests using maven projects:
+Run `cd windows-tests` and `run_windows_tests.bat`(`run_linux_tests.sh` if the host is Linux).
 
 ## Technology used:
 1. Appium
@@ -12,3 +18,5 @@ Scripts to automated tests for Samsung Calculator mobile application.
 3. VS Code
 4. Node.js
 5. Android Debug Bridge
+6. Java 21
+7. Maven

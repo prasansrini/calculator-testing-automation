@@ -31,13 +31,15 @@ check_appium() {
     else
         echo "Appium is not installed. Installing Appium..."
         npm install -g appium
+        appium driver install uiautomator2
+        appium driver install windows
     fi
 }
 
 # Function to run Appium server
 run_appium() {
     echo "Running Appium server..."
-    appium --log-level info --log-no-colors > appium_log2.txt
+    appium --log-level info --log-no-colors
     echo "Appium server is running in the background."
 }
 

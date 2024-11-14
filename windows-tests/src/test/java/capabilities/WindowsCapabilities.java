@@ -11,9 +11,13 @@ public class WindowsCapabilities extends DesiredCapabilities {
     public static WindowsCapabilities getInstance() {
         if (null == INSTANCE) {
             INSTANCE = new WindowsCapabilities();
-            INSTANCE.setCapability("app", "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App");
-            INSTANCE.setCapability("automationName", "windows");
+            loadCapabilities(INSTANCE);
         }
         return INSTANCE;
+    }
+
+    private static void loadCapabilities(WindowsCapabilities instance) {
+        instance.setCapability("app", "Microsoft.WindowsCalculator_8wekyb3d8bbwe!App");
+        instance.setCapability("automationName", "windows");
     }
 }

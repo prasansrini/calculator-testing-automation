@@ -1,4 +1,5 @@
 import unittest
+
 from appium import webdriver
 from appium.options.android import UiAutomator2Options
 from appium.webdriver.common.appiumby import AppiumBy
@@ -8,12 +9,13 @@ capabilities = dict(
     automationName='uiautomator2',
     deviceName='Android',
     appPackage='com.sec.android.app.popupcalculator',
-	appActivity='com.sec.android.app.popupcalculator.Calculator',
+    appActivity='com.sec.android.app.popupcalculator.Calculator',
     language='en',
     locale='US'
 )
 
 # appium_server_url = 'http://10.20.38.240:4723'
+
 appium_server_url = 'http://127.0.0.1:4723'
 
 class TestAppium(unittest.TestCase):
@@ -36,7 +38,8 @@ class TestAppium(unittest.TestCase):
         el4.click()
 
         # Find element by resource ID.
-        result_value = self.driver.find_element(by=AppiumBy.ID, value="com.sec.android.app.popupcalculator:id/calc_edt_formula").text
+        result_value = self.driver.find_element(by=AppiumBy.ID,
+                                                value="com.sec.android.app.popupcalculator:id/calc_edt_formula").text
         assert result_value[:2] == '13'
 
     # Find element by XPATH.
@@ -49,8 +52,9 @@ class TestAppium(unittest.TestCase):
         el3.click()
         el4 = self.driver.find_element(by=AppiumBy.ACCESSIBILITY_ID, value="Calculation")
         el4.click()
-        
-        result_value = self.driver.find_element(by=AppiumBy.XPATH, value='//android.widget.EditText[@resource-id="com.sec.android.app.popupcalculator:id/calc_edt_formula"]').text
+
+        result_value = self.driver.find_element(by=AppiumBy.XPATH,
+                                                value='//android.widget.EditText[@resource-id="com.sec.android.app.popupcalculator:id/calc_edt_formula"]').text
         assert result_value[:2] == '13'
 
 

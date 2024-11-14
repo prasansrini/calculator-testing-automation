@@ -26,13 +26,15 @@ where appium >nul 2>nul
 IF %ERRORLEVEL% NEQ 0 (
     echo Appium is not installed. Installing Appium...
     npm install -g appium
+    appium driver install uiautomator2
+    appium driver install windows
 ) ELSE (
     echo Appium is already installed.
 )
 
 REM Run Appium server
 echo Running Appium server...
-start /B appium --log-level info --log-no-colors > appium_log2.txt
+start appium --log-level info --log-no-colors
 echo Appium server is running.
 
 ENDLOCAL
