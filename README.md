@@ -1,5 +1,5 @@
 # Introduction
-Scripts to automated tests for Samsung Calculator mobile application.
+Maven application to automate tests for Samsung Calculator mobile and Windows applications.
 
 ## Setup:
 1. Run `setup.bat` for Windows or `setup.sh` for Linux. This script installs the dependencies and starts appium server.
