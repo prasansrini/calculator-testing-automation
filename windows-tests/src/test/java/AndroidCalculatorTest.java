@@ -11,9 +11,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 
+import static config.DriverConfig.AndroidConstants.*;
 import static config.DriverConfig.loadAndroidCapabilities;
 import static org.junit.Assert.assertEquals;
-import static util.Constants.AndroidConstants.*;
 
 public class AndroidCalculatorTest {
 
@@ -29,7 +29,7 @@ public class AndroidCalculatorTest {
     }
 
     @BeforeClass
-    public static void beforeMethod() throws MalformedURLException {
+    public static void beforeMethod() {
         DriverConfig driverConfig = DriverConfig.getInstance(appiumUrl, loadAndroidCapabilities(), ConfigConstants.ANDROID_KEY.toString());
         driver = driverConfig.getDriver(ConfigConstants.ANDROID_KEY.toString());
     }

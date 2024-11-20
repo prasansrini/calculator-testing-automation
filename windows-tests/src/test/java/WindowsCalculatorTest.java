@@ -9,7 +9,7 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
-import static util.Constants.WindowsConstants.*;
+import static config.DriverConfig.WindowsConstants.*;
 
 public class WindowsCalculatorTest {
     private static final URL APPIUM_URL;
