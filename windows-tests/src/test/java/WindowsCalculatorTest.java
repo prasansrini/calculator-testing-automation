@@ -48,7 +48,7 @@ public class WindowsCalculatorTest {
     public void clear() {
         if (mCalculatorDriver != null) {
             clickThrough(CLEAR);
-            Assert.assertEquals(ZERO_DIGIT, formatCalculatorResultsText());
+            Assert.assertEquals(DIGIT_ZERO, formatCalculatorResultsText());
         }
     }
 
@@ -57,31 +57,31 @@ public class WindowsCalculatorTest {
         clickThrough(ONE, PLUS, SEVEN, EQUALS);
         mCalculatorResult = mCalculatorDriver.findElementByAccessibilityId(CALCULATOR_RESULTS);
         Assert.assertNotNull(mCalculatorResult);
-        Assert.assertEquals(EIGHT_DIGIT, formatCalculatorResultsText());
+        Assert.assertEquals(DIGIT_EIGHT, formatCalculatorResultsText());
     }
 
     @Test
     public void combination() {
         clickThrough(SEVEN, MULTIPLY, NINE, PLUS, ONE, EQUALS, DIVIDE, EIGHT, EQUALS);
-        Assert.assertEquals(EIGHT_DIGIT, formatCalculatorResultsText());
+        Assert.assertEquals(DIGIT_EIGHT, formatCalculatorResultsText());
     }
 
     @Test
     public void division() {
         clickThrough(EIGHT, EIGHT, DIVIDE, ONE, ONE, EQUALS);
-        Assert.assertEquals(EIGHT_DIGIT, formatCalculatorResultsText());
+        Assert.assertEquals(DIGIT_EIGHT, formatCalculatorResultsText());
     }
 
     @Test
     public void multiplication() {
         clickThrough(NINE, MULTIPLY, NINE, EQUALS);
-        Assert.assertEquals(EIGHTY_ONE_DIGIT, formatCalculatorResultsText());
+        Assert.assertEquals(DIGIT_EIGHTY_ONE, formatCalculatorResultsText());
     }
 
     @Test
     public void subtraction() {
         clickThrough(NINE, MINUS, ONE, EQUALS);
-        Assert.assertEquals(EIGHT_DIGIT, formatCalculatorResultsText());
+        Assert.assertEquals(DIGIT_EIGHT, formatCalculatorResultsText());
     }
 
     private String formatCalculatorResultsText() {

@@ -5,9 +5,9 @@ public class WindowsConstants {
     public static final String CALCULATOR_RESULTS = "CalculatorResults";
     public static final String CLEAR = "Clear";
 
-    public static final String ZERO_DIGIT = "0";
-    public static final String EIGHT_DIGIT = "8";
-    public static final String EIGHTY_ONE_DIGIT = "81";
+    public static final String DIGIT_ZERO = "0";
+    public static final String DIGIT_EIGHT = "8";
+    public static final String DIGIT_EIGHTY_ONE = "81";
 
     public static final String PLUS = "Plus";
     public static final String MINUS = "Minus";
