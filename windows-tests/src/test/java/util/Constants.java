@@ -28,14 +28,18 @@ public class Constants {
         public static final String CLEAR = "Clear";
 
         public static final String DIGIT_ZERO = "0";
+        public static final String DIGIT_ONE = "1";
+        public static final String DIGIT_SIX = "6";
+        public static final String DIGIT_SEVEN = "7";
         public static final String DIGIT_EIGHT = "8";
+        public static final String DIGIT_THIRTEEN = "13";
         public static final String DIGIT_EIGHTY_ONE = "81";
 
         public static final String PLUS = "Plus";
         public static final String MINUS = "Minus";
         public static final String MULTIPLY = "Multiply by";
         public static final String DIVIDE = "Divide by";
-        public static final String EQUALS = "Equals";
+        public static final String EQUALS = "Calculation";
 
         public static final String ONE = "One";
         public static final String TWO = "Two";

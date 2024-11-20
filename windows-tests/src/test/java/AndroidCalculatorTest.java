@@ -13,6 +13,7 @@ import java.util.Arrays;
 
 import static config.DriverConfig.loadAndroidCapabilities;
 import static org.junit.Assert.assertEquals;
+import static util.Constants.AndroidConstants.*;
 
 public class AndroidCalculatorTest {
 
@@ -42,18 +43,18 @@ public class AndroidCalculatorTest {
 
     @Test
     public void additionTest() {
-        clickThrough("7", "Plus", "6", "Calculation");
+        clickThrough(DIGIT_SEVEN, PLUS, DIGIT_SIX, EQUALS);
         String result = driver.findElement(By.id("com.sec.android.app.popupcalculator:id/calc_edt_formula")).getText();
 
-        assertEquals(formattedResult(result), "13");
+        assertEquals(DIGIT_THIRTEEN, formattedResult(result));
     }
 
     @Test
     public void subtractionTest() {
-        clickThrough("7", "Minus", "6", "Calculation");
+        clickThrough(DIGIT_SEVEN, MINUS, DIGIT_SIX, EQUALS);
         String result = driver.findElement(By.id("com.sec.android.app.popupcalculator:id/calc_edt_formula")).getText();
 
-        assertEquals(formattedResult(result), "1");
+        assertEquals(DIGIT_ONE, formattedResult(result));
     }
 
     private String formattedResult(String result) {
