@@ -1,26 +1,36 @@
+import config.ConfigConstants;
+import config.DriverConfig;
 import io.appium.java_client.AppiumDriver;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
 
+import static config.DriverConfig.loadAndroidCapabilities;
 import static org.junit.Assert.assertEquals;
 
 public class AndroidCalculatorTest {
 
+    private static final URL appiumUrl;
     private static AppiumDriver<WebElement> driver;
+
+    static {
+        try {
+            appiumUrl = new URL(ConfigConstants.APPIUM_LOCAL_URL.toString());
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @BeforeClass
     public static void beforeMethod() throws MalformedURLException {
-        URL appiumUrl = new URL(Constants.APPIUM_LOCAL_URL.toString());
-        driver = new AppiumDriver<>(appiumUrl, loadCapabilities());
+        DriverConfig driverConfig = DriverConfig.getInstance(appiumUrl, loadAndroidCapabilities(), ConfigConstants.ANDROID_KEY.toString());
+        driver = driverConfig.getDriver(ConfigConstants.ANDROID_KEY.toString());
     }
 
     @AfterClass
@@ -28,18 +38,6 @@ public class AndroidCalculatorTest {
         if (null != driver) {
             driver.quit();
         }
-    }
-
-    private static Capabilities loadCapabilities() {
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("appium:version", "14");
-        capabilities.setCapability("appium:automationName", "uiautomator2");
-        capabilities.setCapability("deviceName", "Android");
-        capabilities.setCapability("appPackage", "com.sec.android.app.popupcalculator");
-        capabilities.setCapability("appActivity", "com.sec.android.app.popupcalculator.Calculator");
-
-        return capabilities;
     }
 
     @Test

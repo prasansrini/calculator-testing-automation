@@ -10,7 +10,6 @@ import java.util.Map;
 
 public class DriverConfig extends AppiumDriver<WebElement> {
     private static final Map<String, AppiumDriver<WebElement>> DRIVER_CONFIG = new HashMap<>();
-    private static DriverConfig INSTANCE = null;
     private static DesiredCapabilities mDesiredCapabilities = null;
 
     private DriverConfig(URL remoteAddress, DesiredCapabilities desiredCapabilities) {
@@ -47,13 +46,11 @@ public class DriverConfig extends AppiumDriver<WebElement> {
     }
 
     public static DriverConfig getInstance(URL remoteAddress, DesiredCapabilities desiredCapabilities, String platform) {
-        if (null == INSTANCE) {
-            INSTANCE = new DriverConfig(remoteAddress, desiredCapabilities);
-        }
+        DriverConfig driverConfig = new DriverConfig(remoteAddress, desiredCapabilities);
 
-        DRIVER_CONFIG.putIfAbsent(platform, INSTANCE);
+        DRIVER_CONFIG.putIfAbsent(platform, driverConfig);
 
-        return INSTANCE;
+        return driverConfig;
     }
 
     public AppiumDriver<WebElement> getDriver(String platform) {
