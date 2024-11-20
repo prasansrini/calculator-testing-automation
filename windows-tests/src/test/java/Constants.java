@@ -1,5 +1,5 @@
 public enum Constants {
-    REMOTE_URL("http://0.0.0.0:4723"), APPIUM_LOCAL_URL("http://127.0.0.1:4723");
+    REMOTE_URL("http://0.0.0.0:4723"), APPIUM_LOCAL_URL("http://127.0.0.1:4723"), WINDOWS_KEY("Windows"), ANDROID_KEY("Android");
 
     private final String mText;
 

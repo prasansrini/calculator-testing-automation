@@ -1,5 +1,5 @@
-import capabilities.WindowsCapabilities;
-import io.appium.java_client.windows.WindowsDriver;
+import config.DriverConfig;
+import io.appium.java_client.AppiumDriver;
 import org.junit.*;
 import org.openqa.selenium.WebElement;
 
@@ -9,44 +9,50 @@ import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 public class WindowsCalculatorTest {
-    private static WindowsDriver<WebElement> mCalculatorSession = null;
+    private static final URL APPIUM_URL;
+    private static AppiumDriver<WebElement> mCalculatorDriver = null;
     private static WebElement mCalculatorResult = null;
+
+    static {
+        try {
+            APPIUM_URL = new URL(Constants.APPIUM_LOCAL_URL.toString());
+        } catch (MalformedURLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     @BeforeClass
     public static void setup() {
-        try {
-            mCalculatorSession = new WindowsDriver<>(new URL(Constants.APPIUM_LOCAL_URL.toString()), WindowsCapabilities.getInstance());
-            mCalculatorSession.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        DriverConfig driverConfig = DriverConfig.getInstance(APPIUM_URL, DriverConfig.loadWindowsCapabilities(), Constants.WINDOWS_KEY.toString());
+        mCalculatorDriver = driverConfig.getDriver(Constants.WINDOWS_KEY.toString());
 
-            mCalculatorResult = mCalculatorSession.findElementByAccessibilityId("CalculatorResults");
-            Assert.assertNotNull(mCalculatorResult);
-        } catch (Exception e) {
-            System.out.println(e.getLocalizedMessage());
-            System.exit(1);
-        }
+        mCalculatorDriver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+
+        mCalculatorResult = mCalculatorDriver.findElementByAccessibilityId("CalculatorResults");
+        Assert.assertNotNull(mCalculatorResult);
     }
 
     @AfterClass
     public static void tearDown() {
         mCalculatorResult = null;
-        if (mCalculatorSession != null) {
-            mCalculatorSession.quit();
+        if (mCalculatorDriver != null) {
+            mCalculatorDriver.quit();
         }
-        mCalculatorSession = null;
+        mCalculatorDriver = null;
     }
 
     @Before
     public void clear() {
-        if (mCalculatorSession != null) {
+        if (mCalculatorDriver != null) {
             clickThrough("Clear");
             Assert.assertEquals("0", formatCalculatorResultsText());
         }
     }
 
     @Test
-    public void addition() throws MalformedURLException {
+    public void addition() {
         clickThrough("One", "Plus", "Seven", "Equals");
-        mCalculatorResult = mCalculatorSession.findElementByAccessibilityId("CalculatorResults");
+        mCalculatorResult = mCalculatorDriver.findElementByAccessibilityId("CalculatorResults");
         Assert.assertNotNull(mCalculatorResult);
         Assert.assertEquals("8", formatCalculatorResultsText());
     }
@@ -80,6 +86,6 @@ public class WindowsCalculatorTest {
     }
 
     private void clickThrough(String... elements) {
-        Arrays.stream(elements).forEach(element -> mCalculatorSession.findElementByName(element).click());
+        Arrays.stream(elements).forEach(element -> mCalculatorDriver.findElementByName(element).click());
     }
 }
