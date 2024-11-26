@@ -44,7 +44,7 @@ public class AndroidCalculatorTest {
     @Test
     public void additionTest() {
         clickThrough(DIGIT_SEVEN, PLUS, DIGIT_SIX, EQUALS);
-        String result = driver.findElement(By.id("com.sec.android.app.popupcalculator:id/calc_edt_formula")).getText();
+        String result = driver.findElement(By.id(CALCULATOR_RESULTS_ID)).getText();
 
         assertEquals(DIGIT_THIRTEEN, formattedResult(result));
     }
@@ -52,7 +52,7 @@ public class AndroidCalculatorTest {
     @Test
     public void subtractionTest() {
         clickThrough(DIGIT_SEVEN, MINUS, DIGIT_SIX, EQUALS);
-        String result = driver.findElement(By.id("com.sec.android.app.popupcalculator:id/calc_edt_formula")).getText();
+        String result = driver.findElement(By.id(CALCULATOR_RESULTS_ID)).getText();
 
         assertEquals(DIGIT_ONE, formattedResult(result));
     }

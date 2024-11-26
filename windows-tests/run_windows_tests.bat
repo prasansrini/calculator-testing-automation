@@ -1,1 +1,1 @@
-mvn clean test clean
+mvn clean test -Dtest=WindowsCalculatorTest clean

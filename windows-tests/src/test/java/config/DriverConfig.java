@@ -79,7 +79,7 @@ public class DriverConfig extends AppiumDriver<WebElement> {
     }
 
     public static class AndroidConstants {
-        public static final String CALCULATOR_RESULTS = "CalculatorResults";
+        public static final String CALCULATOR_RESULTS_ID = "com.sec.android.app.popupcalculator:id/calc_edt_formula";
         public static final String CLEAR = "Clear";
 
         public static final String DIGIT_ZERO = "0";
